@@ -13,7 +13,7 @@ fun reverse(x: Int): Int {
     var result = 0
     var original = x
     while (original != 0) {
-        var pop = original % 10
+        val pop = original % 10
         original /= 10
         //边界过滤
         if (result > Int.MAX_VALUE / 10 || (result == Int.MAX_VALUE / 10 && pop > 7)) return 0
