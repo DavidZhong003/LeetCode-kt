@@ -27,4 +27,5 @@ fun reverse(x: Int): Int {
 fun main(args: Array<String>) {
     Int.MIN_VALUE.println()
     Int.MAX_VALUE.println()
+    reverse(10102341).println()
 }
