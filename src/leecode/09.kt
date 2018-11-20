@@ -10,20 +10,19 @@ val quest9 = """
 """.trimIndent()
 
 fun isPalindrome(x: Int): Boolean {
-    return when {
-        x<0||(x%10==0&&x!=0) -> false
-        else -> {
-            //翻转一半
-            var right = 0
-            var left = x
-            while (left > right) {
-                right = left % 10 + 10 * right
-                left /= 10
-            }
-            println("left = $left  right = $right")
-            return right == left || left == right / 10
+    return if (x < 0 || (x % 10 == 0 && x != 0)) false
+    else {
+        //翻转一半
+        var right = 0
+        var left = x
+        while (left > right) {
+            right = left % 10 + 10 * right
+            left /= 10
         }
+        println("left = $left  right = $right")
+        return right == left || left == right / 10
     }
+
 }
 
 fun main(args: Array<String>) {
