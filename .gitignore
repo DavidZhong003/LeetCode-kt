@@ -27,6 +27,6 @@ hs_err_pid*
 .idea/modules.xml
 .idea/workspace.xml
 LeetCode-kt.iml
-.script/
 .DS_Store
 out/production/LeetCode-kt/META-INF/
+script/
