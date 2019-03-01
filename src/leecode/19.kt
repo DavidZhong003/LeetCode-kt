@@ -7,33 +7,48 @@ package leecode
  */
 fun main(args: Array<String>) {
     fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
-        head?:return null
-        if (n<=0){
+        head ?: return null
+        if (n <= 0) {
             return head
         }
-        if (head.next==null&&n==1){
+        if (n==1&&head.next==null){
             return null
         }
-        var first  = head
-        var target = head
-        var index = 0
-        var secondGo = false
-        while (first?.next!=null){
+        var first = head
+        // 删除目标
+        var target: ListNode? = null
+        var step = 0
+        while (first?.next != null) {
             first = first.next
-            index++
-            if (index==n){
-                secondGo = true
+            step++
+            if (target != null) {
+                target = target.next
             }
-            if (secondGo){
-                target = target?.next
+            if (step == n) {
+                target = head
             }
         }
-        // 删除target
-        val next = target?.next
-        if (next!=null){
-            target!!.`val` = next.`val`
-            target.next = next.next
+        // 如果n大于长度
+        if (step < n-1) {
+            return head
+        }
+        //如果是要删除头节点
+        if (target == null) {
+            return head.next
+        }
+        // 删除后面那个
+        val del = target.next
+        if (del != null) {
+            target.next = del.next
         }
         return head
     }
+
+    removeNthFromEnd(intArrayOf(1).arrayToNode(), 1).print()
+    //尾节点
+    removeNthFromEnd(intArrayOf(1, 2).arrayToNode(), 1).print()
+    // 删除头
+    removeNthFromEnd(intArrayOf(1, 2).arrayToNode(), 2).print()
+    // 中间
+    removeNthFromEnd(intArrayOf(1, 2, 3).arrayToNode(), 2).print()
 }

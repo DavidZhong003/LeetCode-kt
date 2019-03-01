@@ -1,6 +1,6 @@
 package leecode
 
-import java.util.*
+import java.util.Stack
 
 /**
  *
@@ -50,7 +50,7 @@ fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
 /**
  * 数组 to listNode
  */
-private fun IntArray.arrayToNode(): ListNode? {
+fun IntArray.arrayToNode(): ListNode? {
     val result = ListNode(0)
     var temp = result
     this.forEach { i ->
@@ -63,7 +63,7 @@ private fun IntArray.arrayToNode(): ListNode? {
 /**
  * 打印
  */
-private fun ListNode?.print() {
+ fun ListNode?.print() {
     var temp = this
     val sb = StringBuffer("[")
     while (temp != null) {
