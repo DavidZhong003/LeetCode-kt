@@ -26,3 +26,4 @@ LeetCode-kt.iml
 .DS_Store
 out/production/LeetCode-kt/META-INF/
 script/
+src/java/
