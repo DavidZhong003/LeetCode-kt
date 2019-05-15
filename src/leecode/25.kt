@@ -50,10 +50,10 @@ fun main() {
         if (result == null) {
             while (stack.isNotEmpty()) {
                 val node = stack.pop()
-                if (result==null){
+                if (result == null) {
                     result = node
                     resultLast = node
-                }else{
+                } else {
                     node.next = result
                     result = node
                 }
@@ -69,10 +69,44 @@ fun main() {
         return result
     }
 
-    reverseKGroup(intArrayOf(1, 2).arrayToNode(), 3).print()
+    superReverseKGroup(intArrayOf().arrayToNode(), 6).print()
 //    reverseKGroup(intArrayOf(1, 2, 3, 4).arrayToNode(), 4).print()
 //    reverseKGroup(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8).arrayToNode(), 3).print()
 //    reverseKGroup(intArrayOf(1, 2, 3, 4, 5, 6, 8, 9).arrayToNode(), 1).print()
+}
+
+/**
+ * 高效做饭
+ */
+fun superReverseKGroup(head: ListNode?, k: Int): ListNode? {
+    if (head?.next == null || k <= 1) {
+        return head
+    }
+    val result = ListNode(0)
+    var resultLast: ListNode? = result
+    var subHead = head
+    var subEnd: ListNode? = head
+    while (subHead != null) {
+        // 取第k个
+        var count = 0
+        while (count != k - 1) {
+            subEnd = subEnd?.next
+            count++
+            if (subEnd == null) {
+                resultLast?.next = subHead
+                return result.next
+            }
+        }
+        // 后面
+        val temp = subEnd?.next
+        subEnd?.next = null
+        val sub = reverseNode(subHead)
+        resultLast?.next = sub
+        resultLast = subHead
+        subHead = temp
+        subEnd = temp
+    }
+    return result.next
 }
 
 /**
