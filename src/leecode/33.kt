@@ -24,7 +24,7 @@ fun main() {
             when {
                 nums[mid] == target -> return mid
                 nums[mid] < nums[high] -> {
-                    return if (target > nums[mid] && target < nums[high]) {
+                    return if (target > nums[mid] && target <= nums[high]) {
                         search(nums, mid + 1, high, target)
                     } else {
                         search(nums, low, mid - 1, target)
@@ -48,6 +48,6 @@ fun main() {
         return search(nums, 0, nums.lastIndex, target)
     }
 
-    search(arrayOf(4,5,6,7,0,1,2,3).toIntArray(),7).println()
+    search(arrayOf(1,2,3).toIntArray(),3).println()
 
 }
