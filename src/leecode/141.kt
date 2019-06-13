@@ -7,7 +7,8 @@ package leecode
  */
 fun main() {
     /**
-     * 快慢指针,一个走一步,一个走两步
+     * 快慢指针
+     * 一个走一步,一个走两步
      */
     fun hasCycle(head:ListNode?):Boolean{
         if (head?.next==null){
