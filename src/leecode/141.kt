@@ -14,7 +14,7 @@ fun main() {
             return false
         }
         var slow = head
-        var fast = head.next
+        var fast = head
         while (true){
             if (slow==fast){
                 return true
