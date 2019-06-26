@@ -1,7 +1,7 @@
 package algorithm
 
 import leecode.println
-import java.util.*
+import java.util.Arrays
 
 /**
  *
@@ -10,6 +10,15 @@ import java.util.*
  */
 internal interface IArraySort {
     fun sort(array: IntArray): IntArray
+
+    /**
+     * 交换两个数值
+     */
+     fun IntArray.swap( p: Int, q: Int) {
+        this[p] = this[p] xor this[q]
+        this[q] = this[p] xor this[q]
+        this[p] = this[p] xor this[q]
+    }
 }
 
 fun IntArray.print() = Arrays.toString(this).println()
