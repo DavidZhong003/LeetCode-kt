@@ -1,5 +1,8 @@
 package leecode
 
+import kotlin.math.max
+import kotlin.math.min
+
 /**
  *
  * @author  doive
@@ -60,12 +63,11 @@ fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
         when {
             l1 > r2 -> high = c1 - 1
             l2 > r1 -> low = c1 + 1
-            else -> return (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0
+            else -> return (max(l1, l2) + min(r1, r2)) / 2.0
         }
     }
     return 0.0
 }
-
 
 fun main(args: Array<String>) {
     quest4.println()
