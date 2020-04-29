@@ -10,11 +10,15 @@ const val Black = true
 
 const val Red = false
 
+enum class Color {
+    Red, Black
+}
+
 /**
  * 红黑树节点
  */
 class RedBlackNode<V : Comparable<V>>(private var v: V,
-                                      var color: Boolean = Black,
+                                      var color: Color = Color.Black,
                                       var left: RedBlackNode<V>? = null,
                                       var right: RedBlackNode<V>? = null,
                                       var parents: RedBlackNode<V>? = null
@@ -34,19 +38,51 @@ class RedBlackNode<V : Comparable<V>>(private var v: V,
     override fun getRigthNode(): IBinaryNode<V>? = right
 
     override fun getParentsNode(): IBinaryNode<V>? = parents
-
-}
-
-class RedBlackTree<V : Comparable<V>> : BinaryTree<V,RedBlackNode<V>>() {
-    override fun insertNode(node: RedBlackNode<V>): RedBlackNode<V>? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    /**
+     * 左旋
+     */
+    fun leftHanded() {
+        val p = parents
+        val r = right
+        val isLeft = this == parents?.left
+        // 右子节点变成父节点
+        parents = r
+        r?.parents = p
+        if (p != null) {
+            if (isLeft) {
+                p.left = r
+            } else {
+                p.right = r
+            }
+        }
+        // 右子节点的左节点变成右节点
+        right = r?.left
+        r?.left?.parents = this
+        r?.left = this
     }
 
-    override fun deleteNode(node: RedBlackNode<V>): RedBlackNode<V>? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    /**
+     * 右旋
+     */
+    fun rightHanded() {
+        val p = parents
+        val l = left
+        val isLeft = this == parents?.left
+        // 左节点变成父节点
+        parents = l
+        l?.parents = p
+        if (p != null) {
+            if (isLeft) {
+                p.left = l
+            } else {
+                p.right = l
+            }
+        }
+        // 左节点右节点变成左节点
+        left = l?.right
+        l?.right?.parents = this
+        l?.right = this
     }
 
-    fun rotateLeft(node: RedBlackNode<V>?){
 
-    }
 }

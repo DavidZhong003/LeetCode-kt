@@ -1,7 +1,5 @@
 package leecode
 
-import java.util.*
-
 /**
  * @author  doive
  * on 2018/11/5 13:49
@@ -38,6 +36,6 @@ fun twoSum(nums: IntArray, target: Int): IntArray {
 fun main(args: Array<String>) {
     println(quest1)
     twoSum(intArrayOf(2,7,11,15),9).apply {
-        print(Arrays.toString(this))
+        print(this.contentToString())
     }
 }
