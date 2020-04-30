@@ -1,5 +1,7 @@
 package leecode
 
+import java.util.LinkedList
+
 /**
  *
  * 给定一个二叉树，返回它的中序 遍历。
@@ -28,5 +30,7 @@ fun inorderTraversal(root: TreeNode?): List<Int> {
     return result
 }
 
-// 非递归形式
-
+fun main() {
+    val root=TreeUtils.createTree(0, null, 1, 2, 3, 4)
+    inorderTraversal(root).println()
+}
